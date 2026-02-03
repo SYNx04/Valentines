@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Paushali ❤️</title>
+
+<style>
+@font-face { font-family: PinkRose; src: url("Pink Rose.ttf"); }
+@font-face { font-family: Coolvetica; src: url("Coolvetica Rg.otf"); }
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg,#ffe6ef,#fff);
+  font-family: Coolvetica,-apple-system,BlinkMacSystemFont,
+  "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section { padding: 40px 20px; }
+h2 { font-family: PinkRose; font-size: 2.2rem; }
+
+img {
+  width: 90%;
+  max-width: 340px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+/* Carousel */
+.carousel { max-width: 320px; margin: auto; overflow: hidden; }
+.carousel-track { display: flex; transition: transform .5s ease; }
+.carousel img { width: 320px; }
+
+/* Vinyl */
+.vinyl-wrap {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+}
+.vinyl {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at center,#111 20%,#000 55%,#222 60%,#000 100%);
+  position:relative;
+}
+.vinyl::after {
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  background:#ff5c8d;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+.spin { animation:spin 3s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* Proposal */
+.buttons { position: relative; height: 120px; margin-top: 25px; }
+button {
+  font-size: 1.2rem;
+  padding: 12px 22px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+#yesBtn { background:#ff5c8d; color:white; transition: transform .3s ease; }
+#noBtn {
+  background:#ddd;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.heart { font-size:4rem; animation:pulse 1s infinite; }
+@keyframes pulse { 50% { transform:scale(1.2); } }
+
+#teaseText { margin-top:10px; color:#ff5c8d; opacity:0; }
+
+/* Envelope */
+#envelopeWrap { display:inline-block; cursor:pointer; position:relative; }
+#envelope { font-size:4rem; animation:float 2s ease-in-out infinite; }
+@keyframes float { 50%{ transform:translateY(-6px); } }
+
+#seal {
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  transition:.6s;
+}
+#seal.open { transform:translateX(-50%) scale(0); opacity:0; }
+
+#letter {
+  max-width:320px;
+  margin:18px auto 0;
+  padding:22px;
+  border-radius:16px;
+  font-family:PinkRose;
+  font-size:1.25rem;
+  line-height:1.7;
+  background:repeating-linear-gradient(#fffdf6,#fffdf6 24px,#f2eee7 25px);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  opacity:0;
+  transform:translateY(-25px);
+  transition:.6s;
+  display:none;
+}
+#letter.show { display:block; opacity:1; transform:translateY(0); }
+#letterText { white-space:pre-wrap; }
+
+/* Popup */
+#popup {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.popup-box {
+  background:white;
+  padding:24px;
+  border-radius:20px;
+  max-width:90%;
+}
+.popup-box p { white-space:pre-wrap; line-height:1.6; }
+
+/* Falling emojis */
+.fall {
+  position:fixed;
+  top:-10%;
+  font-size:24px;
+  animation:fall linear forwards;
+  z-index:999;
+}
+@keyframes fall { to{ transform:translateY(100vh); } }
+
+/* Heart dust */
+.dust {
+  position:fixed;
+  bottom:0;
+  font-size:12px;
+  animation:dust 2.5s ease-out forwards;
+}
+@keyframes dust {
+  0% { opacity:0; transform:translateY(0) scale(1); }
+  20% { opacity:1; }
+  100% {
+    opacity:0;
+    transform:translateY(-40px) scale(0.3);
+    filter:blur(2px);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section>
+  <h2>Where it all started 😗</h2>
+  <img src="WhatsApp Image 2026-01-31 at 20.59.25.jpeg">
+  <div id="timer"></div>
+</section>
+
+<section>
+  <h2>Our 1st Date</h2>
+  <div class="carousel">
+    <div class="carousel-track" id="track">
+      <img src="WhatsApp Image 2026-01-31 at 23.09.48.jpeg">
+      <img src="WhatsApp Image 2026-01-31 at 23.09.48 (1).jpeg">
+    </div>
+  </div>
+</section>
+
+<!-- PLAYLIST -->
+<section>
+  <p style="font-size:1.1rem;">Songs that remind me of you 🎶💗</p>
+
+  <div class="vinyl-wrap">
+    <div class="vinyl" id="vinyl"></div>
+    <iframe
+      id="spotify"
+      style="border-radius:14px"
+      src="https://open.spotify.com/embed/playlist/32ynt9NBKhiEdVsdSlfW0Z"
+      width="100%"
+      height="152"
+      frameborder="0"
+      allow="encrypted-media"
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <p style="font-size:0.95rem; margin-top:14px; opacity:0.85;">
+    hit the play button and read the first letter of each song 🎶  
+    <br>
+    click on the 3 dots to save the playlist for later bebi 🥰
+  </p>
+</section>
+
+<section>
+  <div id="envelopeWrap">
+    <div id="seal">💖</div>
+    <div id="envelope">💌</div>
+  </div>
+  <p>Secret Message For You</p>
+  <div id="letter"><div id="letterText"></div></div>
+</section>
+
+<section id="proposal">
+  <h2>Will you be my Valentine, Paushali? 💖</h2>
+  <div class="heart">❤️</div>
+  <div class="buttons" id="buttonArea">
+    <button id="yesBtn">YES</button>
+    <button id="noBtn">NO</button>
+  </div>
+  <div id="teaseText">Just say yes already 😤💖</div>
+</section>
+
+<div id="popup">
+  <div class="popup-box">
+    <p id="popupText"></p>
+    <button id="closePopup"></button>
+  </div>
+</div>
+
+<script>
+/* Timer */
+const start=new Date("2025-08-23T00:00:00");
+setInterval(()=>{
+  const d=new Date()-start;
+  timer.textContent=
+  `${Math.floor(d/86400000)} days ${Math.floor(d/3600000)%24}h ${Math.floor(d/60000)%60}m ${Math.floor(d/1000)%60}s together 💞`;
+},1000);
+
+/* Carousel */
+let idx=0;
+setInterval(()=>{
+  idx=(idx+1)%2;
+  track.style.transform=`translateX(-${idx*320}px)`;
+},5000);
+
+/* Vinyl spin */
+spotify.addEventListener("click",()=>vinyl.classList.add("spin"));
+
+/* NO button logic */
+let noCount=0, yesScale=1;
+noBtn.onmouseenter=noBtn.onclick=noBtn.ontouchstart=()=>{
+  noCount++;
+  const a=buttonArea.getBoundingClientRect(), b=noBtn.getBoundingClientRect();
+  noBtn.style.left=Math.random()*(a.width-b.width)+"px";
+  noBtn.style.top=Math.random()*(a.height-b.height)+"px";
+  yesScale+=0.12;
+  yesBtn.style.transform=`scale(${yesScale})`;
+  if(noCount===5) teaseText.style.opacity=1;
+};
+
+/* Envelope typing */
+const letterMsg=`You're the best thing I've ever found on the internet.
+
+Suddenly all those recharges were worth it 😝`;
+let typed=false;
+envelopeWrap.onclick=()=>{
+  if(typed) return;
+  seal.classList.add("open");
+  letter.classList.add("show");
+  let i=0; letterText.textContent="";
+  const t=setInterval(()=>{
+    letterText.textContent+=letterMsg[i++];
+    if(i>=letterMsg.length){clearInterval(t);typed=true;}
+  },55);
+};
+
+/* Popup typing */
+function typePopup(text){
+  popupText.textContent="";
+  let i=0;
+  const t=setInterval(()=>{
+    popupText.textContent+=text[i++];
+    if(i>=text.length) clearInterval(t);
+  },40);
+}
+
+/* YES */
+yesBtn.onclick=()=>{
+  popup.style.display="flex";
+  typePopup(
+`Knew you would say yes, Whenever I’m with you, I’m home.
+You give my heart so much peace.
+I’m sending you all my love today.
+Thanks for being you.
+Happy Valentine’s Day; I love you`
+  );
+  closePopup.textContent="I love you more";
+  closePopup.onclick=secondPopup;
+  fallEmojis();
+};
+
+function secondPopup(){
+  typePopup(
+`Can't wait to see you, my forever valentine.
+the LOML in person :3333`
+  );
+  closePopup.textContent="Me too";
+  closePopup.onclick=()=>{
+    popup.style.display="none";
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+}
+
+/* Emoji rain → heart dust */
+function fallEmojis(){
+  const emojis=["🍫","🧸","💖","❤️"];
+  const stack=[];
+  for(let i=0;i<120;i++){
+    const e=document.createElement("div");
+    e.className="fall";
+    e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.left=Math.random()*100+"vw";
+    e.style.animationDuration=4+Math.random()*3+"s";
+    document.body.appendChild(e);
+    stack.push(e);
+    setTimeout(()=>{
+      e.style.top="auto";
+      e.style.bottom=Math.random()*25+"px";
+    },5500);
+  }
+  setTimeout(()=>{
+    stack.forEach(el=>{
+      const r=el.getBoundingClientRect();
+      el.remove();
+      for(let i=0;i<3;i++){
+        const d=document.createElement("div");
+        d.className="dust";
+        d.textContent="💗";
+        d.style.left=r.left+Math.random()*12+"px";
+        d.style.bottom="0px";
+        document.body.appendChild(d);
+        setTimeout(()=>d.remove(),2500);
+      }
+    });
+  },10000);
+}
+</script>
+
+</body>
+</html>
